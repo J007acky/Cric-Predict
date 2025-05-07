@@ -57,7 +57,9 @@ class InputData(BaseModel):
 
 @app.post("/predict")
 def predict_score(data: InputData):
-    return predict_score(data)
+    answer = predict_score(data)
+    answer['predicted_final_score'] -= 4
+    return answer
 
 
 @app.post("/predict-dll")
